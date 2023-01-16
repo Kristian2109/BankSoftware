@@ -31,7 +31,7 @@ int main()
                 continue;
             }
             do {
-                showUserOptions(fileData, indexUser); coutTabs(7);
+                showUserOptions(fileData, indexUser, name);
                 cin >> action;
                 switch (action) {
                 case 'C':
@@ -45,6 +45,7 @@ int main()
                 case 'L':
                 case 'l':
                     system("CLS");
+                    cin.ignore(1);
                     break;
                 case 'T':
                 case 't':

@@ -43,6 +43,9 @@ void deleteMemory(char** fileData) {
 bool isSmallLetter(char symbol) {
     return (symbol >= 97 && symbol <= 122);
 }
+void printLineStars() {
+    cout << "************************************************************************************************************************\n\n";
+}
 bool isBigLetter(char symbol) {
     return (symbol >= 65 && symbol <= 90);
 }

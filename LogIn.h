@@ -35,17 +35,17 @@ int isUserAuthenticated(char** data, char* username, char* pass) {
     return -1;
 }
 void enterUserDetails(char* data, int isName) {
-    cout << endl; coutTabs(6);
-    (isName == 1) ? cout << "Enter your username: \n\n" : cout << "Enter your password: \n\n";
-    coutTabs(5);
+    cout << endl; coutTabs(5);
+    (isName == 1) ? cout << "Enter your username:  " : cout << "Enter your password:  ";
     storeUserInput(data, (isName == 1) ? MAX_NAME : MAX_PASS);
-    //cin.getline(data, (isName == 1) ? MAX_NAME : MAX_PASS);
 }
 void loginUser(char** fileData, char* name, char* pass, int& lineIndexInFile, bool& isLoggedIn) {
     int counter = 0;
     system("CLS");
+    printLineStars();
     enterUserDetails(name, 1);
     enterUserDetails(pass, 0);
+    printLineStars();
     while (counter++ != 3) {
         if (willGoBack(name)) {
             isLoggedIn = false;
@@ -58,13 +58,15 @@ void loginUser(char** fileData, char* name, char* pass, int& lineIndexInFile, bo
             return;
         }
         else if (lineIndexInFile == -1) {
-            cout << endl; centerText("Not such a username. Try again.", 5);
+            cout << endl; centerText("Not such a username. Try again.\n", 5);
+            printLineStars();
             enterUserDetails(name, 1);
             enterUserDetails(pass, 0);
         }
         else {
             cout << endl; centerText("  False password. Try again.", 5);
             enterUserDetails(pass, 0);
+            printLineStars();
         }
     }
     cout << endl;
@@ -80,16 +82,18 @@ void getAction(char& action) {
         action = 'K';
         return;
     }
-    //cout << "Heeeeey  " << actionArr[0] << endl;
-    //continueAfterAction;
     action = actionArr[0];
     cin.ignore(1);
 }
 void logInMenu(char& action) {
-    centerText("Type 'L' to Login.\n\n", 6);
-    centerText("Type 'R' to Register.\n\n", 6);
-    centerText("Type 'Q' to Quit.\n\n", 6);
-    coutTabs(7);
+    cout << "\t\t\t\t\t\tWELCOME TO KRIS BANK\n\n";
+    printLineStars();
+    centerText("Choose what you will do.\n\n", 6);
+    centerText("'L' - Login.\n\n", 6);
+    centerText("'R' - Register.\n\n", 6);
+    centerText("'Q' - Quit.\n\n", 6);
+    printLineStars();
+    coutTabs(6); cout << "Action:  ";
     char actionArr[10];
     storeUserInput(actionArr, 9);
     action = actionArr[0];
@@ -98,14 +102,17 @@ void logInMenu(char& action) {
         return;
     }
 }
-void showUserOptions(char** fileData, int authCode) {
+void showUserOptions(char** fileData, int authCode, char* name) {
     system("CLS");
     char ballance[MAX_SUM_LEN] = "0";
     getBallanceChar(fileData, ballance, authCode);
-    cout << "\n\n\t\t\t\t\tYou have " << ballance << " BGN.Choose one of the following options: \n\n";
-    centerText("C - cancel account\n", 7);
-    centerText("D - deposit\n", 7);
-    centerText("L - logout\n", 7);
-    centerText("T - transfer\n", 7);
-    centerText("W - withdraw\n\n", 7);
+    printLineStars();
+    cout << "\t\t\t\t\tHello " << name <<"! What do you want to do?\n\n";
+    cout << "\t\t\t\t\tYou have " << ballance << " BGN.Choose one of the following options: \n\n";
+    centerText("C - cancel account\n", 6);
+    centerText("D - deposit\n", 6);
+    centerText("L - logout\n", 6);
+    centerText("T - transfer\n", 6);
+    centerText("W - withdraw\n\n", 6);
+    centerText("Action:  ", 6);
 }
