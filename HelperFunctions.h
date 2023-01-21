@@ -1,12 +1,26 @@
-#pragma once
+/**
+*
+* Solution to course project # 9
+* Introduction to programming course
+* Faculty of Mathematics and Informatics of Sofia University
+* Winter semester 2022/2023
+*
+* @author Kristian Petrov
+* @idnumber 8MI0600201
+* @compiler MSVC
+*
+* <header with helper functions>
+*
+*/
 
+#pragma once
 #include <iostream>
 #include <limits>
 using namespace std;
 
 const int MAX_NAME = 40;
 const int MAX_PASS = 20;
-const int MAX_SUM_LEN = 10;
+const int MAX_SUM_LEN = 11;
 
 const int MAX_LINE_LEN = MAX_NAME + MAX_PASS + MAX_SUM_LEN;
 const char approvedSymbols[9] = "!@#$%^&*";
@@ -23,11 +37,11 @@ void centerText(string text, int tabs) {
 bool isDigit(char number) {
     return number >= 48 && number <= 57;
 }
-void continueAfterAction(int numTabs) {
-    centerText("Press any symbol + enter to continue.\n\n", numTabs);
-    char letter = '0';
-    coutTabs(7); cin >> letter;
+void Pause(int numTabs) {
+    centerText("Press enter to continue.\n\n", numTabs);
+    string someInput;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    coutTabs(7); getline(cin, someInput);
 }
 void createMemory(char** fileData) {
     for (int i = 0; i < 100; i++) {
@@ -90,7 +104,7 @@ bool saveProgram() {
     return false;
 }
 void storeUserInput(char* inputArr, int size) {
-    cin.getline(inputArr, (size - 1));
+    cin >> inputArr;
     if (cin.fail()) {
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');

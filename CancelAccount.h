@@ -1,5 +1,19 @@
-#pragma once
+/**
+*
+* Solution to course project # 9
+* Introduction to programming course
+* Faculty of Mathematics and Informatics of Sofia University
+* Winter semester 2022/2023
+*
+* @author Kristian Petrov
+* @idnumber 8MI0600201
+* @compiler MSVC
+*
+* <header with functions for canceling account>
+*
+*/
 
+#pragma once
 #include <iostream>
 #include <limits>
 
@@ -42,12 +56,12 @@ void executeCancelAccount(char** fileData, char* name, int authCode) {
             return;
         }
         system("CLS");
-        int code = isUserAuthenticated(fileData, name, password);
+        int code = getUserIndex(fileData, name, password);
         if (code == authCode &&
             getBallanceInDouble(fileData, authCode, 2) == 0) {
             removeUserProfile(fileData, authCode);
             centerText("You've canceled your account.", 6);
-            continueAfterAction(5);
+            Pause(5);
             return;
         }
         else if (code != authCode) {
@@ -55,12 +69,12 @@ void executeCancelAccount(char** fileData, char* name, int authCode) {
         }
         else {
             centerText("The sum in your account is not 0 leva.\n\n", 5);
-            continueAfterAction(5);
+            Pause(5);
             return;
         }
         counter++;
     }
     system("CLS"); cout << "\n\n";
     centerText("You've entered your password wrong 3 times. Try again later.\n\n", 4);
-    continueAfterAction(5);
+    Pause(5);
 }
