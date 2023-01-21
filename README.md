@@ -1,14 +1,14 @@
 # BankSoftware
 Student project for the first semester at FMI
 
-The project strives to imitate a bank software.
+**The project strives to imitate a bank software.**
 
 - Not important note: I've begun the project too early and didn't use any more complex functionalities, as vectors, structures and so on...
 
-Prerequisites:
+**Prerequisites**:
   - The project is build without usage of only arrays and primite datatypes. Exception are hashing function, round function and one function with string.
 
-##Notes:
+**Notes**:
     - Every user has three features - name, password and ballance.
     - The program will detect always incorrect input.
     - The data for the users is stored in txt file, with colons as delimiters.
@@ -32,10 +32,10 @@ Prerequisites:
     - After successful registration, you should login to your profile.
 
 4. Deposit
-    - You can deposit a positive sum up to 100000.
+    - You can deposit a positive sum up to 100000 BGN.
 
 5. Withdraw
-    - You can withdraw without limits, unless you exceed your max overdraft which is 10000.
+    - You can withdraw without limits, unless you exceed your max overdraft which is 10000 BGN.
 
 6. Transfer
     - You can transfer to a user who is in the database. It isn't correct to try to transfer to yourself. Also your overdraft should be in limits.
