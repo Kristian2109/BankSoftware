@@ -1,14 +1,14 @@
 # BankSoftware
-Student project for the first semester at FMI
+**Student project for the first semester at FMI**
 
-**The project strives to imitate a bank software.**
+## **The project strives to imitate a bank software.**
 
 - Not important note: I've begun the project too early and didn't use any more complex functionalities, as vectors, structures and so on...
 
-**Prerequisites**
+### Prerequisites
   - The project is build without usage of only arrays and primite datatypes. Exception are hashing function, round function and one function with string.
 
-**Notes**
+### Notes
   - Every user has three features - name, password and ballance.
   - The program will detect always incorrect input.
   - The data for the users is stored in txt file, with colons as delimiters.
@@ -16,7 +16,7 @@ Student project for the first semester at FMI
   - The data for everything unless the registration will be overwritten only after you quit the file.
   - The programm accepts also low letters for the actions.
 
-##Functionality
+## Functionality
 
 1. Beginning Menu
     - You can choose from the current options: Register, Login or Quit.
