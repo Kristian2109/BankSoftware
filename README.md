@@ -18,30 +18,30 @@
 
 ## Functionality
 
-1. Beginning Menu
+1. **Beginning Menu**
     - You can choose from the current options: Register, Login or Quit.
 
-2. Login
+2. **Login**
     - First you enter your name. If the name is not right, you have three attempts, after this you will go to the beginning menu.
     - The same is with the password.
   
-3. Register
+3. **Register**
     - The name should have only lattin letters and symbols without a colon.
     - In the password you should have at least 1 low letter, 1 high letter, 1 digit and 1 symbol and the length should be at least 5 characters.
     - After you've successfuly registered, the data will be stored in txt file with the hashed password.
     - After successful registration, you should login to your profile.
 
-4. Deposit
+4. **Deposit**
     - You can deposit a positive sum up to 100000 BGN.
 
-5. Withdraw
+5. **Withdraw**
     - You can withdraw without limits, unless you exceed your max overdraft which is 10000 BGN.
 
-6. Transfer
+6. **Transfer**
     - You can transfer to a user who is in the database. It isn't correct to try to transfer to yourself. Also your overdraft should be in limits.
 
-7. Cancel account
+7. **Cancel account**
     - You can cansel your account after successfuly giving your password. The ballance should be 0 to do this.
 
-8. Logout 
+8. **Logout**
     - Go back to the beginning menu.
