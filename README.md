@@ -9,12 +9,12 @@ Student project for the first semester at FMI
   - The project is build without usage of only arrays and primite datatypes. Exception are hashing function, round function and one function with string.
 
 **Notes**
-    - Every user has three features - name, password and ballance.
-    - The program will detect always incorrect input.
-    - The data for the users is stored in txt file, with colons as delimiters.
-    - If you want to go back from every action you've choosen. Type only **-1** at the action and you will go to the previous menu.
-    - The data for everything unless the registration will be overwritten only after you quit the file.
-    - The programm accepts also low letters for the actions.
+  - Every user has three features - name, password and ballance.
+  - The program will detect always incorrect input.
+  - The data for the users is stored in txt file, with colons as delimiters.
+  - If you want to go back from every action you've choosen. Type only **-1** at the action and you will go to the previous menu.
+  - The data for everything unless the registration will be overwritten only after you quit the file.
+  - The programm accepts also low letters for the actions.
 
 ##Functionality
 
