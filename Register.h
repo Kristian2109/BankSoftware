@@ -36,24 +36,23 @@ bool isPassValid(char* pass) {
         }
         else if (isDigit(pass[index])) {
             numDigits++;
-            //cout << "Digit" << "  ";
         }
         else {
             return false;
         }
         index++;
-        //cout << index << "  ";
     }
 
     return index > 4 && numLowLet > 0 && numSymbols > 0 && numHighLet > 0 && numDigits > 0;
 }
 void registerName(char** fileData, char* name, bool& isNameRegistered) {
-    cout << endl; coutTabs(5);
-    cout << "Give username with only lattin letters and symbols: \n\n";
-    coutTabs(5);
-    storeUserInput(name, MAX_NAME);
     int counter = 0;
     while (counter < 3) {
+        printLineStars();
+        cout << endl; coutTabs(5);
+        cout << "Give username with only lattin letters and symbols: \n\n";
+        coutTabs(5);
+        storeUserInput(name, MAX_NAME);
         if (willGoBack(name)) {
             isNameRegistered = false;
             return;
@@ -74,10 +73,11 @@ void registerName(char** fileData, char* name, bool& isNameRegistered) {
         counter++;
     }
     centerText("You didn't register your name. Try again later.\n\n", 5);
-    continueAfterAction(5);
+    Pause(5);
     isNameRegistered = false;
 }
 void registerPass(char* pass, bool& isPassRegistered) {
+    printLineStars();
     cout << endl; coutTabs(5);
     cout << "Enter a password with only lattin letters, digits and symbol," << endl;
     coutTabs(5);
@@ -97,7 +97,7 @@ void registerPass(char* pass, bool& isPassRegistered) {
     }
 
     cout << endl; centerText("You didn't register your password. Try again later.\n\n", 5);
-    continueAfterAction(5);
+    Pause(5);
     isPassRegistered = false;
 }
 void registerUser(char** fileData, char* name, char* pass, bool& isValidRegistration) {
@@ -120,8 +120,9 @@ void registerUser(char** fileData, char* name, char* pass, bool& isValidRegistra
     file.open("user_data.txt", ios::app);
     file << name << ':' << hashedPass << ':' << '0' << '\n';
     file.close();
+    printLineStars();
     centerText("You've successfully registered your profile\n", 5);
-    continueAfterAction(5);
+    Pause(5);
 }
 void executeRegister(char** oldfileData, char** newFileData, char* name, char* pass, const string file_name, bool& isValidRegistration) {
     registerUser(oldfileData, name, pass, isValidRegistration);

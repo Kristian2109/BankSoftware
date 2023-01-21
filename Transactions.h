@@ -73,7 +73,7 @@ void executeDeposit(char** fileData, char* amountChar, int indexUser) {
     if (saveProgram()) {
         cout << endl;
         centerText("You've entered unapproved symbol.\n\n", 6);
-        continueAfterAction(6);
+        Pause(6);
         return;
     }
 
@@ -82,10 +82,10 @@ void executeDeposit(char** fileData, char* amountChar, int indexUser) {
     }
 
     while (counter < 2) {
-        if (depositAmount > 0 && depositAmount < 100000) {
+        if (depositAmount > 0 && depositAmount <= 100000) {
             depositAmount = round(depositAmount * 100) / 100;
             depositSum(fileData, amountChar, depositAmount, indexUser);
-            continueAfterAction(5);
+            Pause(5);
             return;
         }
 
@@ -96,7 +96,7 @@ void executeDeposit(char** fileData, char* amountChar, int indexUser) {
     }
 
     centerText("You've entered incorrect sum 3 times. Choose another action.\n\n", 4);
-    continueAfterAction(5);
+    Pause(5);
 }
 void withdrawSum(char** fileData, char* amountChar, double amount, int indexUser) {
     int indexChars = findBeginIndexData(fileData[indexUser], 2);
@@ -107,23 +107,23 @@ void withdrawSum(char** fileData, char* amountChar, double amount, int indexUser
 bool isWithdrawInLimits(char* userLine, double amountToWithdraw) {
     int beginIndexBallance = findBeginIndexData(userLine, 2);
     double currentBallance = getAmountOfMoneyFromUserLine(userLine, beginIndexBallance);
-    return (currentBallance - amountToWithdraw > -10000);
-    
+    return (currentBallance - amountToWithdraw >= -10000);
+
 }
 void executeWithdraw(char** fileData, char* amountChar, int indexUser) {
     int counter = 0;
 
     cin.ignore(1);
     system("CLS"); cout << "\n\n";
-    centerText("Enter a positive sum you want to withdraw.", 5);
+    printLineStars();
+    centerText("Enter a positive:  ", 5);
 
     while (counter < 3) {
-        cout << endl << endl; coutTabs(7);
         double amountToWithdraw = 0;
         cin >> amountToWithdraw;
         if (saveProgram()) {
             cout << endl; centerText("You've entered unapproved symbol.\n\n", 6);
-            continueAfterAction(6);
+            Pause(6);
             return;
         }
         if (amountToWithdraw == -1) {
@@ -132,8 +132,9 @@ void executeWithdraw(char** fileData, char* amountChar, int indexUser) {
         if (isWithdrawInLimits(fileData[indexUser], amountToWithdraw)) {
             amountToWithdraw = round(amountToWithdraw * 100) / 100;
             withdrawSum(fileData, amountChar, amountToWithdraw, indexUser);
+            printLineStars();
             cout << "\n\n\t\t\t\tYou've successfully withdrawed " << amountToWithdraw << " BGN from you bank account.\n\n";
-            continueAfterAction(5);
+            Pause(5);
             return;
         }
         else {
@@ -142,11 +143,9 @@ void executeWithdraw(char** fileData, char* amountChar, int indexUser) {
         counter++;
     }
     centerText("You haven't given a correct sum 3 times. Try again later.\n\n", 5);
-    continueAfterAction(5);
+    Pause(5);
 }
 bool transferSum(char** fileData, char* amountChar, int indexUserToFund, double amount, int currentUserIndex) {
-
-    //int indexUser = findUserIndexByName(fileData, name);
 
     if (isWithdrawInLimits(fileData[currentUserIndex], amount)) {
         withdrawSum(fileData, amountChar, amount, currentUserIndex);
@@ -165,6 +164,7 @@ void executeTransferSum(char** fileData, char* amountChar, int currentUserIndex)
 
     while (counter < 3) {
         system("CLS");
+        printLineStars();
         centerText("Enter the username of the user you want to fund.\n\n\t\t\t\t\t\t", 5);
         char userToFund[MAX_NAME];
         storeUserInput(userToFund, MAX_NAME); cout << "\n\n";
@@ -175,10 +175,17 @@ void executeTransferSum(char** fileData, char* amountChar, int currentUserIndex)
         int indexUser = findUserIndexByName(fileData, userToFund);
         if (indexUser == -1) {
             centerText("Not such a user. Try again with other username.\n", 5);
-            continueAfterAction(5);
+            Pause(5);
             continue;
         }
 
+        if (indexUser == currentUserIndex) {
+            centerText("Don't try to fund yourself :).\n", 5);
+            Pause(5);
+            continue;
+        }
+
+        printLineStars();
         centerText("Enter the amount of the sum you want to transfer.\n\n\t\t\t\t\t\t\t\t", 5);
         cin >> amount;
         if (amount == -1) {
@@ -186,14 +193,15 @@ void executeTransferSum(char** fileData, char* amountChar, int currentUserIndex)
         }
         if (saveProgram()) {
             cout << endl; centerText("You've entered unapproved symbol.\n\n", 6);
-            continueAfterAction(6);
+            Pause(6);
             return;
         }
         if (transferSum(fileData, amountChar, indexUser, amount, currentUserIndex)) {
             amount = round(amount * 100) / 100;
+            printLineStars();
             cout << "\n\n\t\t\t\t\tYour transfer of " << amount << " BGN to "
-                 << userToFund << " is successful. \n\n";
-            continueAfterAction(6);
+                << userToFund << " is successful. \n\n";
+            Pause(6);
             return;
         }
         counter++;
