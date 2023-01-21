@@ -44,4 +44,4 @@ Prerequisites:
     - You can cansel your account after successfuly giving your password. The ballance should be 0 to do this.
 
 8. Logout 
-    - go back to the beginning menu
+    - Go back to the beginning menu.
